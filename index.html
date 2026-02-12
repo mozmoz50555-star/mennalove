@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For MENNA ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+  margin:0;
+  height:100vh;
+  font-family:'Cairo',sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  background:#ff4d6d;
+}
+
+/* خلفية MENNA */
+body::before{
+  content:"MENNA ❤️ MENNA ❤️ MENNA ❤️ MENNA ❤️ MENNA ❤️ MENNA ❤️ MENNA ❤️";
+  position:absolute;
+  width:200%;
+  height:200%;
+  font-size:40px;
+  color:rgba(255,255,255,0.07);
+  transform:rotate(-25deg);
+  white-space:nowrap;
+  animation:moveBg 20s linear infinite;
+}
+
+@keyframes moveBg{
+  from{transform:translateX(-50%) rotate(-25deg);}
+  to{transform:translateX(0%) rotate(-25deg);}
+}
+
+.card{
+  position:relative;
+  backdrop-filter:blur(15px);
+  background:rgba(255,255,255,0.15);
+  border-radius:25px;
+  padding:30px;
+  text-align:center;
+  color:#fff;
+  box-shadow:0 0 40px rgba(0,0,0,0.2);
+  width:340px;
+  max-height:85vh;
+  overflow:auto;
+  z-index:2;
+}
+
+input{
+  padding:12px;
+  border:none;
+  border-radius:15px;
+  outline:none;
+  width:80%;
+  text-align:center;
+  font-size:16px;
+}
+
+button{
+  margin-top:15px;
+  padding:12px 30px;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(45deg,#ff2e63,#ff6a88);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px #fff;
+}
+
+#content{display:none;}
+
+.heart{
+  position:fixed;
+  color:#fff;
+  animation:fall linear forwards;
+  z-index:1;
+}
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+
+img{
+  width:85%;
+  border-radius:20px;
+  margin:10px;
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
+  opacity:0;
+  transform:scale(.8);
+  transition:all 1s ease;
+}
+img.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+</style>
+</head>
+<body>
+
+<div class="card" id="login">
+<h2>كلمة السر 💖</h2>
+<input type="password" id="pass" placeholder="اكتبي السر">
+<br>
+<button onclick="check()">دخول</button>
+</div>
+
+<div class="card" id="content">
+
+<h2 style="color:#fff;">روحك و قلبك</h2>
+
+<p style="line-height:1.8; font-size:15px;">
+انا عارف اننا مبنتكلمش و انا كنت محضرلك ده من بدري بس للاسف بقا مش هعرف اشوف فرحتك و لا ردة فعلك <br><br>
+اي نعم انا عارف انك ممكن تبلكيني بعدها بس حبيت اني افرحك على الاقل <br><br>
+لما تبلكيني هتشوفي الرسالة بس بمناسبة عيد الحب حبيت اقولك <br><br>
+كل سنة و انتي عمري و حياتي و روحي و نور عيني <br><br>
+و كل سنة و انا و انتي مع بعض العمر كله يا بنوتي <br><br>
+عمر م هتلاقي حد يحبك زيي و الله لاني محبتش غيرك ف الدنيا يا نور عيني <br><br>
+و لا هحب غيرك اصلا و مش حياتي غير معاكي و بس <br><br>
+يمكن المفروض اني اقولك كلام حلو بس للاسف بقا مش بعرف <br><br>
+بس انا بحبك اويييييييييي و الله العظيم ❤️
+</p>
+
+<button onclick="showPics()">كملي</button>
+
+<div id="pics" style="display:flex; flex-direction:column; align-items:center; margin-top:20px;">
+  <img src="menna1.jpg">
+  <img src="menna2.jpg">
+  <img src="menna3.jpg">
+</div>
+
+<audio id="loveSong" autoplay loop>
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+function check(){
+  let p=document.getElementById("pass").value;
+  if(p=="2542025"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("content").style.display="block";
+    hearts();
+    document.getElementById("loveSong").play();
+  }else{
+    alert("الباسورد غلط ❌");
+  }
+}
+
+function showPics(){
+  const pics = document.querySelectorAll('#pics img');
+  pics.forEach((pic, index) => {
+    setTimeout(()=>{
+      pic.classList.add('show');
+    }, index*600);
+  });
+}
+
+function hearts(){
+  setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"%";
+    h.style.fontSize=(15+Math.random()*30)+"px";
+    h.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  },300);
+}
+
+</script>
+
+</body>
+</html>
